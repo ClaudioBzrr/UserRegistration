@@ -8,6 +8,7 @@ export function Login(){
     return(
         <div className="container">
             <Input name="Email"/>
+            <Input name="Password" type="password"/>
         </div>
     )
 }

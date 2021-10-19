@@ -4,7 +4,6 @@
     position: relative;
     height: 50px;
     overflow: hidden;
-    background-color: blue;
 }
 
 .form input{
@@ -29,13 +28,12 @@
 .form label:after{
     content:'';
     position: absolute;
-    bottom: 0px;
+    bottom: -1px;
     left: 0px;
     height: 100%;
     width: 100%;
     border-bottom: 3px solid #5fa8d3;
     transform: translateX(-100%);
-    background-color: blue;
 
 }
 
@@ -43,20 +41,20 @@
     position: absolute;
     bottom: 5px;
     left: 0px;
-    transition: all 0.3 ease;
+    transition: all 0.3s ease;
 }
 
 .form input:focus + .label-name .content-name,
 .form input:valid + .label-name .content-name{
     transform: translateY(-150%);
     font-size: 14px;
-    color:#5fa8d3
+    color:#5fa8d3;
 }
 
 .form input:focus + .label-name::after, 
-.form input:valid+ .label-name::after {
-    transform:translateX(-100%);
-    transition: transform 0.3 ease;
+.form input:valid + .label-name::after {
+    transform:translateX(-0%);
+    transition: transform 0.3s ease;
 }
 
 
