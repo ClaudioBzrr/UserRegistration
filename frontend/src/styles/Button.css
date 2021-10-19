@@ -1,0 +1,28 @@
+button{
+    font-weight: 900;
+    width: 30em;
+    height: 2em;
+    border-radius: 10px;
+    border-style: none;
+    background-color:azure;
+    transition: all ease-in-out 0.4s;
+    position: relative;
+}
+
+.effect:before{
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 0;
+    height: 2em;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: all ease-in-out 0.4s;
+
+}
+
+.effect:hover:before{
+    width: 100%;
+}
+
