@@ -1,12 +1,15 @@
 import React from 'react'
+import './../styles/home.css'
 import { Header } from '../components/Header'
 
 
 export function Home(){
     return(
-        <div>
+        <div className="container">
             <Header/>
-            <h1>Home</h1>
+            <div className="welcome-container">
+                <h1>Bem vindo(a), Fulano</h1>
+            </div>
         </div>
     )
 }

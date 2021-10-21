@@ -1,12 +1,16 @@
 import React from 'react'
+import '../styles/list.css'
 import { Header } from '../components/Header'
+import { UserCard } from '../components/UserCard'
 
 
 export function List(){
     return(
-        <div>
+        <div className="container" >
             <Header/>
-            <h1>Listar usuários</h1>
+            <UserCard name="teste" email="teste@teste" created_at="10/01/2021"/>
+            <UserCard name="teste" email="teste@teste" created_at="10/01/2021"/>
+            <UserCard name="teste" email="teste@teste" created_at="10/01/2021"/>
         </div>
     )
 }

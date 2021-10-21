@@ -1,10 +1,10 @@
 button{
     font-weight: 900;
-    width: 30em;
+    width: 50%;
     height: 2em;
     border-radius: 10px;
     border-style: none;
-    background-color:azure;
+    background-color:#a0dcff;
     transition: all ease-in-out 0.4s;
     position: relative;
 }
@@ -25,4 +25,3 @@ button{
 .effect:hover:before{
     width: 100%;
 }
-

@@ -4,14 +4,15 @@ import {InputHTMLAttributes} from 'react'
 
 interface IInput extends InputHTMLAttributes<HTMLInputElement>{
     name:string;
+    title:string;
 }
 
 
-export function Input({name,...rest}:IInput){
+export function Input({name,title,...rest}:IInput){
     return(
         <div className="form">
-            <input name="name" autoComplete="off" required {...rest}/>
-            <label htmlFor="name" className="label-name">
+            <input name={title} autoComplete="off" required {...rest}/>
+            <label htmlFor={title} className="label-name">
                 <span className="content-name">{name}</span>
             </label>
         </div>
