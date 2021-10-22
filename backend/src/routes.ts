@@ -10,7 +10,7 @@ const userController =  new UserController();
 
 
 routes.post("/create",userController.create)
-routes.post("/list",userController.list)
+routes.get("/list",userController.list)
 routes.delete("/delete/:id",userController.delete)
 routes.put("/edit/:id",userController.edit)
 

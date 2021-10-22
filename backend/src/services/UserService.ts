@@ -52,7 +52,7 @@ class UserService{
     async list(){
 
         const data =  await this.userRepo.find({
-            select:['id','name','created_at']
+            select:['id','name', 'email','created_at']
         });
         
         return data;
