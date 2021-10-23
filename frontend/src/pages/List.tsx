@@ -4,6 +4,7 @@ import '../styles/list.css'
 import {api} from '../service/api'
 import { Header } from '../components/Header'
 import { UserCard } from '../components/UserCard'
+import {useToast} from '@chakra-ui/react'
 
 
 
@@ -15,14 +16,34 @@ interface User{
 }
 
 export function List(){
-
+    const toast = useToast()
     const [users,setUsers] =  useState<User[]>([])
 
+
+
+    async function ApiList(){
+        try{
+            await api.get<[]>('list').then(response =>{
+                return setUsers(response.data)
+            })
+        }catch(err){
+            return toast({
+                title:"Erro",
+                description: `${err}`,
+                position:'top-right',
+                duration:4000,
+                status:'error',
+                isClosable:true
+
+            })
+        }
+    }
+
     useEffect(()=>{
-        api.get<[]>('list').then(response =>{
-            return setUsers(response.data)
-        })
-    },[])
+
+        ApiList();
+        
+    })
 
     return(
         <div className="container" >

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChakraProvider } from "@chakra-ui/react"
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import { Edit } from './pages/Edit';
 import { Home } from './pages/Home';
@@ -10,15 +11,17 @@ import './styles/globall.css'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Login}/>
-        <Route path="/register" exact component={Register}/>
-        <Route path="/home" exact component={Home}/>
-        <Route path="/list" exact component={List}/>
-        <Route path="/edit" exact component={Edit}/>
-      </Switch>
-    </BrowserRouter>
+    <ChakraProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={Login}/>
+          <Route path="/register" exact component={Register}/>
+          <Route path="/home" exact component={Home}/>
+          <Route path="/list" exact component={List}/>
+          <Route path="/edit" exact component={Edit}/>
+        </Switch>
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
 

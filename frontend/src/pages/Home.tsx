@@ -1,6 +1,7 @@
 import React from 'react'
 import './../styles/home.css'
 import { Header } from '../components/Header'
+import {Heading,Divider} from '@chakra-ui/react'
 
 
 export function Home(){
@@ -8,8 +9,9 @@ export function Home(){
         <div className="container">
             <Header/>
             <div className="welcome-container">
-                <h1>Bem vindo(a), Fulano</h1>
+                <Heading>Bem vindo(a), Fulano</Heading>
             </div>
+            <Divider/>
         </div>
     )
 }
