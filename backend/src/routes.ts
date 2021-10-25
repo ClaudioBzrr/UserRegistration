@@ -13,6 +13,7 @@ routes.post("/create",userController.create)
 routes.get("/list",userController.list)
 routes.delete("/delete/:id",userController.delete)
 routes.put("/edit/:id",userController.edit)
+routes.post("/login",userController.login)
 
 
 export {routes}

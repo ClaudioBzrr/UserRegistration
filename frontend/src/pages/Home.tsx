@@ -5,11 +5,13 @@ import {Heading,Divider} from '@chakra-ui/react'
 
 
 export function Home(){
+
+    const name =  localStorage.getItem('userName')
     return(
         <div className="container">
             <Header/>
             <div className="welcome-container">
-                <Heading>Bem vindo(a), Fulano</Heading>
+                <Heading>Bem vindo(a), {name}</Heading>
             </div>
             <Divider/>
         </div>

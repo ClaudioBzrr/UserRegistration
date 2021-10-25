@@ -1,5 +1,4 @@
 import { getCustomRepository } from "typeorm";
-import { User } from "../entities/User";
 import { UserRepo } from "./../repositories/UserRepo";
 
 
@@ -10,12 +9,11 @@ interface UserCreate{
 }
 
 
-// interface UserEdit{
-//     id:string
-//     name?:string;
-//     password?:string;
-//     email?:string;
-// }
+interface UserLogin{
+
+    email:string;
+    password:string;
+}
 
 interface UserDelete{
     id:string
@@ -30,6 +28,25 @@ class UserService{
         await this.userRepo.save(user)
 
         return user;
+    }
+
+
+    async login({email,password}:UserLogin){
+        
+        const user = await this.userRepo.createQueryBuilder('users')
+        .select('users.name')
+        .where('users.email =:email',{email})
+        .andWhere('users.password =:password',{password}).getOne()
+
+
+
+        if(!user){
+            return  new Error('Usuário não permitido');
+        }else{
+            return user.name
+        }
+
+
     }
 
     async edit({id,name,email,password}){

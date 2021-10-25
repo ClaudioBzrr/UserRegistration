@@ -1,4 +1,4 @@
-import {Request,Response} from 'express'
+import {Request,response,Response} from 'express'
 import { UserService } from '../services/UserService'
 
 
@@ -15,8 +15,27 @@ class UserController{
         }
 
         catch(err){
-            return res.status(404).json(`Atention : ${err}`)
+            return res.status(404).json(`Attention : ${err}`)
         }
+    }
+
+
+    async login(req:Request, res:Response):Promise<Response>{
+
+        const userService =  new UserService();
+
+
+        const {email, password} = req.body
+
+        try{
+
+            const user  =  await userService.login({email, password}).then(user=> res.json(user))
+            
+        }catch(err){
+            return res.status(404).json(`Attention : ${err}`)
+        }
+
+
     }
 
     async list(req:Request,res:Response):Promise<Response>{
@@ -29,7 +48,7 @@ class UserController{
 
         }
         catch(err){
-            return res.status(404).json(`Atention : ${err}`)
+            return res.status(404).json(`Attention : ${err}`)
         }
     }
 
@@ -45,7 +64,7 @@ class UserController{
             return res.json(id)
         }
         catch(err){
-            return res.status(404).json(`Atention : ${err}`)
+            return res.status(404).json(`Attention : ${err}`)
         }
     }
 
@@ -58,7 +77,7 @@ class UserController{
             return res.json(id);
 
         }catch(err){
-            return res.status(404).json(`Atention : ${err}`)
+            return res.status(404).json(`Attention : ${err}`)
         }
     }
 }

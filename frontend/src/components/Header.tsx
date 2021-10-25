@@ -1,14 +1,23 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 import {FiUserPlus as Icon} from 'react-icons/fi'
 import './../styles/header.css'
-// import Icon from './../assets/images/register-icon.png'
+
 
 
 
 
 export function Header(){
 
+    const history =  useHistory();
+
+    function handleExit(e:any){
+        e.preventDefault()
+
+        localStorage.clear()
+        history.push('/')
+
+    }
 
     return(
         <div className="container">
@@ -19,7 +28,12 @@ export function Header(){
                 <ul>
                     <li><Link to="/edit">Editar cadastro</Link></li>
                     <li><Link to="/list">Listar usuários</Link></li>
-                   <li><Link to="/">Sair</Link></li>
+                   <li>
+
+                       <a href="##" onClick={handleExit}>
+                           Sair
+                       </a>
+                   </li>
 
                 </ul>
             </nav>
