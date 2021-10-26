@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 // import '../styles/login.css'
 import {api} from '../service/api'
 // import { Button } from '../components/Button'
 // import { Input } from '../components/Input'
 import { useToast } from '@chakra-ui/toast'
+
 import {
     Input,
     Button,
     Box,
     Flex,
-    Heading
+    Heading,
+    Text
 } from '@chakra-ui/react'
 
 // interface ResponseData{
@@ -36,7 +38,6 @@ export function Login(){
                 localStorage.setItem('userName',response.data)
                 console.log(response.data)
             })
-
             history.push('/home')
 
         }catch(err){
@@ -50,6 +51,7 @@ export function Login(){
                 isClosable:true
             })
         }
+
         
     }  
 
@@ -64,9 +66,17 @@ export function Login(){
                         <Heading>Login</Heading>
                         <Input w="sm" size="md" variant="filled" className="input-email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email} required />
                         <Input w="sm" size="md" variant="filled" className="input-password" placeholder="Senha" type="password" onChange={e => setPassword(e.target.value)} value={password} required mt="-2em"/>
-                        <Button variant="ghost" size="lg" type="submit" >Entrar</Button>
+                        <Button w="sm" variant="ghost" size="lg" type="submit" >Entrar</Button>
                     </Flex>
                 </form>
+            </Box>
+
+            <Box mt="1em">
+                <Link to="/register">
+                    <Text fontSize="xs" color="GrayText">
+                        Não tem um cadastro ? cadastre-se aqui
+                    </Text>
+                </Link>
             </Box>
         </Flex>
         // </div>
