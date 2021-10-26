@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import {useHistory} from 'react-router-dom'
-import '../styles/login.css'
+// import '../styles/login.css'
 import {api} from '../service/api'
-import { Button } from '../components/Button'
-import { Input } from '../components/Input'
+// import { Button } from '../components/Button'
+// import { Input } from '../components/Input'
 import { useToast } from '@chakra-ui/toast'
-
+import {
+    Input,
+    Button,
+    Box,
+    Flex,
+    Heading
+} from '@chakra-ui/react'
 
 // interface ResponseData{
 //     name:string;
@@ -50,12 +56,19 @@ export function Login(){
 
 
     return(
-        <div className="login-container">
-            <form className="form-container" onSubmit={handleLogin}>
-                <Input className="input-email" name="Email" title="email" onChange={e => setEmail(e.target.value)} value={email}/>
-                <Input className="input-password" name="Senha" type="password" title="password"onChange={e => setPassword(e.target.value)} value={password}/>
-                <Button title="Entrar" type="submit" />
-            </form>
-        </div>
+        // <div className="login-container">
+        <Flex flexDirection="column" alignItems="center" justifyContent="center" w="full" h="100vh">
+            <Box> 
+                <form onSubmit={handleLogin}>
+                    <Flex flexDirection="column" alignItems="center" justifyContent="space-evenly" borderRadius="xl" borderWidth="1px" w="lg" h="sm">
+                        <Heading>Login</Heading>
+                        <Input w="sm" size="md" variant="filled" className="input-email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email} required />
+                        <Input w="sm" size="md" variant="filled" className="input-password" placeholder="Senha" type="password" onChange={e => setPassword(e.target.value)} value={password} required mt="-2em"/>
+                        <Button variant="ghost" size="lg" type="submit" >Entrar</Button>
+                    </Flex>
+                </form>
+            </Box>
+        </Flex>
+        // </div>
     )
 }
