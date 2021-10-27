@@ -36,7 +36,8 @@ class UserService{
         const user = await this.userRepo.createQueryBuilder('users')
         .select('users.name')
         .where('users.email =:email',{email})
-        .andWhere('users.password =:password',{password}).getOne()
+        .andWhere('users.password =:password',{password})
+        .getOneOrFail()
 
 
 

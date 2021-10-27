@@ -41,12 +41,13 @@ export function Login(){
             history.push('/home')
 
         }catch(err){
-
+            setEmail("")
+            setPassword("")
             return toast({
                 title:"Erro",
-                description: `${err}`,
+                description: `Email / senha errados!`,
                 position:'top-right',
-                duration:4000,
+                duration:3000,
                 status:'error',
                 isClosable:true
             })

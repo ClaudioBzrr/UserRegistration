@@ -29,7 +29,7 @@ class UserController{
 
         try{
 
-            const user  =  await userService.login({email, password}).then(user=> res.json(user))
+            await userService.login({email, password}).then(user=> res.json(user))
             
         }catch(err){
             return res.status(403).json(`Attention : ${err}`)
