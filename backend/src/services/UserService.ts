@@ -15,7 +15,7 @@ interface UserLogin{
     password:string;
 }
 
-interface UserDelete{
+interface UserID{
     id:string
 }
 
@@ -34,7 +34,10 @@ class UserService{
     async login({email,password}:UserLogin){
         
         const user = await this.userRepo.createQueryBuilder('users')
-        .select('users.name')
+        .select([
+            'users.name',
+            'users.id'
+        ])
         .where('users.email =:email',{email})
         .andWhere('users.password =:password',{password})
         .getOneOrFail()
@@ -42,9 +45,9 @@ class UserService{
 
 
         if(!user){
-            return  new Error('Usuário não permitido');
+            return  new Error('Usuário não autorizado');
         }else{
-            return user.name
+            return user
         }
 
 
@@ -77,8 +80,23 @@ class UserService{
 
     }
 
+    async returnUser({id}:UserID){
 
-    async delete({id}:UserDelete){
+        const data =  await this.userRepo.createQueryBuilder('users')
+        .where('users.id=:id',{id})
+        .select([
+            'users.name',
+            'users.email',
+            'users.password'
+        ])
+        
+        
+        return data;
+
+    }
+
+
+    async delete({id}:UserID){
 
         const del =  await this.userRepo.delete({id:id});
         return del;

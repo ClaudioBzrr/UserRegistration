@@ -52,6 +52,22 @@ class UserController{
         }
     }
 
+
+    async returnUser(req:Request,res:Response):Promise<Response>{
+        const userService = new UserService();
+
+        const {id} =  req.params
+
+        try{
+
+            await userService.returnUser({id}).then(data => res.json(data))
+
+        }
+        catch(err){
+            return res.status(404).json(`Attention : ${err}`)
+        }
+    }
+
     async edit(req:Request,res:Response):Promise<Response>{
         const userService =  new UserService();
         const {id} =  req.params;

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header } from '../components/Header'
 import { EditInPlace } from '../components/EditInPlace'
+import { api } from '../service/api'
 
 
 

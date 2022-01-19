@@ -35,18 +35,24 @@ export function Login(){
         try{
             const form_data = {email,password}
             await api.post<any>('login',form_data).then(response =>{
-                localStorage.setItem('userName',response.data)
+
+                localStorage.setItem('userName',response.data.name)
+                localStorage.setItem('userId',response.data.id)
+
+
                 console.log(response.data)
             })
+
             history.push('/home')
 
         }catch(err){
             setEmail("")
             setPassword("")
+            
             return toast({
                 title:"Erro",
                 description: `Email / senha errados!`,
-                position:'top-right',
+                position:'top',
                 duration:3000,
                 status:'error',
                 isClosable:true
