@@ -6,8 +6,8 @@ import { Home } from './pages/Home';
 import { List } from './pages/List';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import {PrivateRoute} from './auth/PrivateRoute'
 import './styles/globall.css'
-
 
 function App() {
   return (
@@ -16,9 +16,9 @@ function App() {
         <Switch>
           <Route path="/" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
-          <Route path="/home" exact component={Home}/>
-          <Route path="/list" exact component={List}/>
-          <Route path="/edit" exact component={Edit}/>
+          <PrivateRoute path="/home" exact component={Home}/>
+          <PrivateRoute path="/list" exact component={List}/>
+          <PrivateRoute path="/edit" exact component={Edit}/>
         </Switch>
       </BrowserRouter>
     </ChakraProvider>

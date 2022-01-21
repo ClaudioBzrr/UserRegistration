@@ -66,7 +66,7 @@ export function List(){
         <Flex flexDirection="column" className="container" alignItems="center"  w="full" h="full">
             <Header/>
             <Box className="container-table" borderRadius="lg" borderWidth="1px" mt="10em" justifyContent="center" w="50vw" p="5">
-                <Table variant="simple" size="lg"  h="100%">
+                <Table variant="simple" size="lg"  h="100%" zIndex={999}>
                     <Tr>
                         <Th>Nome</Th>
                         <Th>Email</Th>
