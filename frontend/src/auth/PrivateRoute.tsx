@@ -1,18 +1,18 @@
 import React from 'react';
 import {RouteProps,Route,Redirect} from 'react-router-dom'
 import {IsAuthenticate} from './Authenticate'
+import {useToast} from '@chakra-ui/react'
 
 
 
-
-interface IprivateRoutes extends RouteProps{
+interface IprivateRoute extends RouteProps{
 
     component:any
 }
 
-export function PrivateRoute({component:Component, ...rest} : IprivateRoutes){
+export function PrivateRoute({component:Component, ...rest} : IprivateRoute){
 
- 
+    const toast =  useToast()
     return (
         
         <Route
@@ -22,11 +22,21 @@ export function PrivateRoute({component:Component, ...rest} : IprivateRoutes){
             return IsAuthenticate()?(
                 <Component {...routeProps} />
             ):(
+                toast({
+                    title:"Erro",
+                    description: 'Usuário não autenticado',
+                    position:'top',
+                    duration:3000,
+                    status:'error',
+                    isClosable:true
+                }),
                 <Redirect to={
                     {
                         pathname:'/'
                     }
                 } />
+                 
+
             )
         }}
 
