@@ -1,4 +1,4 @@
-export  function IsAuthenticate(){
+export  function IsAuthenticated(){
 
     if(localStorage.getItem('userId')){
         return true

@@ -1,8 +1,7 @@
 import React from 'react';
 import {RouteProps,Route,Redirect} from 'react-router-dom'
-import {IsAuthenticate} from './Authenticate'
+import {IsAuthenticated} from './Authenticated'
 import {useToast} from '@chakra-ui/react'
-
 
 
 interface IprivateRoute extends RouteProps{
@@ -19,7 +18,7 @@ export function PrivateRoute({component:Component, ...rest} : IprivateRoute){
         {...rest}
 
         render={(routeProps)=>{
-            return IsAuthenticate()?(
+            return IsAuthenticated()?(
                 <Component {...routeProps} />
             ):(
                 toast({
@@ -36,10 +35,9 @@ export function PrivateRoute({component:Component, ...rest} : IprivateRoute){
                     }
                 } />
                  
-
             )
         }}
-
+        
         />
         
     )

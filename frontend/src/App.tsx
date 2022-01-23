@@ -12,17 +12,23 @@ import './styles/globall.css'
 function App() {
   return (
     <ChakraProvider>
+
       <BrowserRouter>
         <Switch>
+
           <Route path="/" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
           <PrivateRoute path="/home" exact component={Home}/>
           <PrivateRoute path="/list" exact component={List}/>
           <PrivateRoute path="/edit" exact component={Edit}/>
+
         </Switch>
       </BrowserRouter>
+      
     </ChakraProvider>
   );
 }
 
 export default App;
+
+
