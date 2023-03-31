@@ -23,9 +23,9 @@ export interface CustomerVisibilityData{
 }
 
 
-export interface CustomerRepositoryData{
+export interface CustomerRepository{
     create:(data:CustomerCreateData) => Promise<void>
-    update:(data:CustomerUpdateData) => Promise<void>
+    update:(filter:CustomerReadData,data:CustomerUpdateData) => Promise<void>
     findOne:(filter:CustomerReadData,visibility?:CustomerVisibilityData) => Promise<CustomerReadData>
     findMany:(filter:CustomerReadData,visibility?:CustomerVisibilityData) => Promise<CustomerReadData[]>
     delete:(filter:CustomerReadData) => Promise<void>
