@@ -1,7 +1,7 @@
 export interface MailAdapterProps{
     recipient:string
     subject:string,
-    html:string
+    body:string
 }
 
 export interface MailAdapter{
