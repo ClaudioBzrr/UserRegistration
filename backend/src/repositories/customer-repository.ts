@@ -13,13 +13,15 @@ export interface CustomerUpdateData{
 export interface CustomerReadData{
     id?:string,
     email?:string,
-    name?:string
+    name?:string,
+    password?:string
 }
 
 export interface CustomerVisibilityData{
     id?:boolean,
     email?:boolean,
-    name?:boolean
+    name?:boolean,
+    password?:boolean
 }
 
 
