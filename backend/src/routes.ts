@@ -29,7 +29,7 @@ routes.get('/users',async(req,res)=>{
             customerRepository
         )
         const data = await findManyCustomersUseCase.execute({})
-        return data
+        return res.json(data)
     }catch(err){
         return res.json(String)
     }
