@@ -23,7 +23,7 @@ routes.get('/customer/:id',async(req,res)=>{
         const data = await findOneCustomerUseCase.execute({id})
         return res.json(data)
     }catch(err){
-        return res.json(String(err).replace('Error: ',''))
+        return res.status(404).json(String(err).replace('Error: ',''))
     }
 })
 
@@ -35,7 +35,7 @@ routes.get('/customers',async(req,res)=>{
         const data = await findManyCustomersUseCase.execute({})
         return res.json(data)
     }catch(err){
-        return res.json(String(err).replace('Error: ',''))
+        return res.status(404).json(String(err).replace('Error: ',''))
     }
 })
 
@@ -46,7 +46,7 @@ routes.delete('/customer/:id',async(req,res)=>{
         await deleteCustomerUseCase.execute({id})
         return res.json('Usuário deletado com sucesso')
     }catch(err){
-        throw new Error(String(err).replace('Error: ',''))
+        return res.status(404).json(String(err).replace('Error: ',''))
     }
 })
 
@@ -61,7 +61,7 @@ routes.put('/customer/:id', async(req,res)=>{
         await updateCustomerUseCase.execute(id,data)
         return res.json('Usuário alterado com sucesso')
     }catch(err){
-        throw new Error(String(err).replace('Error: ',''))
+        return res.status(404).json(String(err).replace('Error: ',''))
     }
 })
 
@@ -75,7 +75,7 @@ routes.post('/login', async(req,res) =>{
         const customer = await loginUseCase.execute(data)
         return res.json(customer)
     }catch(err){
-        return res.json(String(err).replace('Error: ',''))
+        return res.status(404).json(String(err).replace('Error: ',''))
     }
 })
 
@@ -90,7 +90,7 @@ routes.post('/reset-password',async(req,res) =>{
         await resetPasswordUseCase.execute(email)
         return res.json(`Senha resetada com sucesso! A nova senha foi enviada para o e-mail ${email}`)
     }catch(err){
-        return res.json(String(err).replace('Error: ',''))
+        return res.status(404).json(String(err).replace('Error: ',''))
     }
 })
 
