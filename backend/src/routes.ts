@@ -7,6 +7,7 @@ import { FindManyCustomer } from './use-case/find-many-customer-use-case'
 import { DeleteCustomerUsecase } from './use-case/delete-customer-use-case'
 import { UpdateCustomerUseCase } from './use-case/update-customer-use-case'
 import { LoginCustomerUseCase } from './use-case/login-customer-use-case'
+import { ResetPasswordUseCase } from './use-case/reset-password-use-case'
 
 
 export const routes =  Router()
@@ -73,6 +74,21 @@ routes.post('/login', async(req,res) =>{
         )
         const customer = await loginUseCase.execute(data)
         return res.json(customer)
+    }catch(err){
+        return res.json(String(err).replace('Error: ',''))
+    }
+})
+
+routes.post('/reset-password',async(req,res) =>{
+    try{
+        const email = req.body
+        const resetPasswordUseCase =  new ResetPasswordUseCase(
+            customerRepository,
+            encryptRepository,
+            mailAdapter
+        )
+        await resetPasswordUseCase.execute(email)
+        return res.json(`Senha resetada com sucesso! A nova senha foi enviada para o e-mail ${email}`)
     }catch(err){
         return res.json(String(err).replace('Error: ',''))
     }
