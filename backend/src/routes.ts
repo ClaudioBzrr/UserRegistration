@@ -6,6 +6,7 @@ import { FindOneCustomerUseCase } from './use-case/find-one-customer-use-case'
 import { FindManyCustomer } from './use-case/find-many-customer-use-case'
 import { DeleteCustomerUsecase } from './use-case/delete-customer-use-case'
 import { UpdateCustomerUseCase } from './use-case/update-customer-use-case'
+import { LoginCustomerUseCase } from './use-case/login-customer-use-case'
 
 
 export const routes =  Router()
@@ -60,6 +61,20 @@ routes.put('/customer/:id', async(req,res)=>{
         return res.json('Usuário alterado com sucesso')
     }catch(err){
         throw new Error(String(err).replace('Error: ',''))
+    }
+})
+
+routes.post('/login', async(req,res) =>{
+    try{
+        const data = req.body
+        const loginUseCase =  new LoginCustomerUseCase(
+            customerRepository,
+            encryptRepository
+        )
+        const customer = await loginUseCase.execute(data)
+        return res.json(customer)
+    }catch(err){
+        return res.json(String(err).replace('Error: ',''))
     }
 })
 
