@@ -1,4 +1,5 @@
 import {Router} from 'express'
+import {z} from 'zod'
 import { PrismaCustomerRepository } from './repositories/prisma/prisma-customer-repository'
 import { BcryptEncryptRepository } from './repositories/bcrypt/bcrypt-encrypt-repository'
 import { NodemailerMailAdapter } from './adapters/nodemailer/nodemailer-mail-adapter'
@@ -52,8 +53,12 @@ routes.delete('/customer/:id',async(req,res)=>{
 
 routes.put('/customer/:id', async(req,res)=>{
     try{
+        const createUserSchema =  z.object({
+            name:z.string(),
+            email:z.string().email()
+        })
         const {id} =  req.params
-        const data =  req.body
+        const data =  createUserSchema.parse(req.body)
         const updateCustomerUseCase =  new UpdateCustomerUseCase(
             customerRepository,
             encryptRepository
@@ -67,7 +72,11 @@ routes.put('/customer/:id', async(req,res)=>{
 
 routes.post('/login', async(req,res) =>{
     try{
-        const data = req.body
+        const createUserSchema =  z.object({
+            email:z.string().email(),
+            password:z.string()
+        })
+        const data = createUserSchema.parse(req.body)
         const loginUseCase =  new LoginCustomerUseCase(
             customerRepository,
             encryptRepository
@@ -81,7 +90,10 @@ routes.post('/login', async(req,res) =>{
 
 routes.post('/reset-password',async(req,res) =>{
     try{
-        const email = req.body
+        const createUserSchema = z.object({
+            email:z.string().email()
+        })
+        const {email} = createUserSchema.parse(req.body)
         const resetPasswordUseCase =  new ResetPasswordUseCase(
             customerRepository,
             encryptRepository,
