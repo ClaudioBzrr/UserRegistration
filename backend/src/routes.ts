@@ -54,8 +54,9 @@ routes.delete('/customer/:id',async(req,res)=>{
 routes.put('/customer/:id', async(req,res)=>{
     try{
         const createUserSchema =  z.object({
-            name:z.string(),
-            email:z.string().email()
+            name:z.string().optional(),
+            email:z.string().email().optional(),
+            password:z.string().optional()
         })
         const {id} =  req.params
         const data =  createUserSchema.parse(req.body)
