@@ -4,6 +4,7 @@ import { BcryptEncryptRepository } from './repositories/bcrypt/bcrypt-encrypt-re
 import { NodemailerMailAdapter } from './adapters/nodemailer/nodemailer-mail-adapter'
 import { FindOneCustomerUseCase } from './use-case/find-one-customer-use-case'
 import { FindManyCustomer } from './use-case/find-many-customer-use-case'
+import { DeleteCustomerUsecase } from './use-case/delete-customer-use-case'
 
 
 export const routes =  Router()
@@ -31,6 +32,17 @@ routes.get('/users',async(req,res)=>{
         const data = await findManyCustomersUseCase.execute({})
         return res.json(data)
     }catch(err){
-        return res.json(String)
+        return res.json(String(err).replace('Error: ',''))
+    }
+})
+
+routes.delete('/user/:id',async(req,res)=>{
+    try{
+        const {id} =  req.params
+        const deleteCustomerUseCase =  new DeleteCustomerUsecase(customerRepository)
+        await deleteCustomerUseCase.execute({id})
+        return res.json('Usuário deletado com sucesso')
+    }catch(err){
+        throw new Error(String(err).replace('Error: ',''))
     }
 })
