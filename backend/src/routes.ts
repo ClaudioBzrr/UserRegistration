@@ -5,6 +5,7 @@ import { NodemailerMailAdapter } from './adapters/nodemailer/nodemailer-mail-ada
 import { FindOneCustomerUseCase } from './use-case/find-one-customer-use-case'
 import { FindManyCustomer } from './use-case/find-many-customer-use-case'
 import { DeleteCustomerUsecase } from './use-case/delete-customer-use-case'
+import { UpdateCustomerUseCase } from './use-case/update-customer-use-case'
 
 
 export const routes =  Router()
@@ -13,7 +14,7 @@ const customerRepository =  new PrismaCustomerRepository()
 const encryptRepository = new BcryptEncryptRepository()
 const mailAdapter =  new NodemailerMailAdapter()
 
-routes.get('/user/:id',async(req,res)=>{
+routes.get('/customer/:id',async(req,res)=>{
     try{
         const {id} =  req.params
         const findOneCustomerUseCase =  new FindOneCustomerUseCase(customerRepository)
@@ -24,7 +25,7 @@ routes.get('/user/:id',async(req,res)=>{
     }
 })
 
-routes.get('/users',async(req,res)=>{
+routes.get('/customers',async(req,res)=>{
     try{
         const findManyCustomersUseCase =  new FindManyCustomer(
             customerRepository
@@ -36,7 +37,7 @@ routes.get('/users',async(req,res)=>{
     }
 })
 
-routes.delete('/user/:id',async(req,res)=>{
+routes.delete('/customer/:id',async(req,res)=>{
     try{
         const {id} =  req.params
         const deleteCustomerUseCase =  new DeleteCustomerUsecase(customerRepository)
@@ -46,3 +47,19 @@ routes.delete('/user/:id',async(req,res)=>{
         throw new Error(String(err).replace('Error: ',''))
     }
 })
+
+routes.put('/customer/:id', async(req,res)=>{
+    try{
+        const {id} =  req.params
+        const data =  req.body
+        const updateCustomerUseCase =  new UpdateCustomerUseCase(
+            customerRepository,
+            encryptRepository
+        )
+        await updateCustomerUseCase.execute(id,data)
+        return res.json('Usuário alterado com sucesso')
+    }catch(err){
+        throw new Error(String(err).replace('Error: ',''))
+    }
+})
+
