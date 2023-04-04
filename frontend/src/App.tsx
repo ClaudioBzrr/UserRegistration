@@ -1,6 +1,14 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { routes } from "./routes";
 
 export function App() {
   return (
-    <h1>Hello world</h1>
+    <BrowserRouter>
+      <Routes>
+        {
+          routes.map(({path,element},index) =><Route key={String(index)} path={path} element={element}/>)
+        }
+      </Routes>
+    </BrowserRouter>
   )
 }
