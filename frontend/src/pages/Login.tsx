@@ -1,9 +1,13 @@
-
+import {
+    Box, Center
+} from '@chakra-ui/react'
 
 export function Login(){
     return(
-        <h1>
-            Login
-        </h1>
+        <Box w='full' h='full'>
+            <Center w='xl' h='xl'>
+
+            </Center>
+        </Box>
     )
 }
