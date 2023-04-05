@@ -20,14 +20,15 @@ export function ResetPassword(){
                 <Box p={8} rounded={'lg'} boxShadow={'lg'} bg={'white'}>
                     <Stack spacing={4}>
                         <FormControl>
-                            <FormLabel id="email">E-mail</FormLabel>
+                            <FormLabel fontSize={'lg'} id="email">E-mail</FormLabel>
                             <Input type="email"/>
                         </FormControl>
                     </Stack>
-                    <Stack spacing={8}>
+                    <Stack spacing={10} pt={5} >
                         <Button
+                            color={'white'}
                             bg={'blue.500'}
-                            _hover={{bg:'gray.400'}}
+                            _hover={{bg:'blue.400'}}
                         >
                             Redefinir senha
                         </Button>
