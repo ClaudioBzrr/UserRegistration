@@ -1,4 +1,6 @@
 import { Login } from "./pages/Login"
+import { Register } from "./pages/Register"
+import { ResetPassword } from "./pages/ResetPassword"
 import { Users } from "./pages/Users"
 
 interface RouteProps{
@@ -14,5 +16,13 @@ export const routes:RouteProps[] =[
     {
         path:'/users',
         element:<Users/>
+    },
+    {
+        path:'/reset-password',
+        element:<ResetPassword/>
+    },
+    {
+        path:'/register',
+        element:<Register/>
     }
 ]
