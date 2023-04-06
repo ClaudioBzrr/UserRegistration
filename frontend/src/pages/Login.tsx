@@ -37,7 +37,7 @@ export function Login(){
                                 <Input borderColor={'gray.300'} type={showPassword == true ? 'text':'password'}/>
                                 <InputRightElement 
                                     onClick={() =>setShowPassword(!showPassword)}
-                                    children={showPassword==true? <ViewOffIcon/> : <ViewIcon/>}
+                                    children={showPassword==true?  <ViewIcon/> : <ViewOffIcon/>}
                                 />
                             </InputGroup>
                         </FormControl>
