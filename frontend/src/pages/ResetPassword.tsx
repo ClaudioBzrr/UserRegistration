@@ -1,4 +1,5 @@
-import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, FormControl, FormLabel, Heading, IconButton, Input, Stack, Text } from "@chakra-ui/react";
+import { ArrowBackIcon } from '@chakra-ui/icons'
 
 export function ResetPassword(){
     return(
@@ -9,7 +10,7 @@ export function ResetPassword(){
             bg={'gray.200'}
         >
             <Stack spacing={8} maxW={'lg'} py={12} px={6}>
-                <Stack align={'center'} >
+                <Stack align={'center'}>
                     <Heading fontSize={'3xl'} textAlign={'center'}>
                         Redefina sua senha
                     </Heading>
