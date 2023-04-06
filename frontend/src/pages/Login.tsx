@@ -65,9 +65,11 @@ export function Login(){
                             </Button>
                         </Stack>
                             <Stack align={'center'} fontSize={'sm'}>
-                                <Link color={'blue.500'}>
-                                    <Linker to='/register'>Não tem uma conta? Crie aqui</Linker>
-                                </Link>
+                                <Text>Não tem uma conta? 
+                                    <Link ml={2} color={'blue.500'}>
+                                        <Linker to='/register'>Crie aqui</Linker>
+                                    </Link>
+                                </Text>
                             </Stack>
                     </Stack>
                 </Box>

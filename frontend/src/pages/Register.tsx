@@ -29,7 +29,7 @@ export function Register(){
                             <Button 
                                 color={'white'}
                                 bg={'blue.500'}
-                                _hover={{bg:'blue.400'}}
+                                _hover={{bg:'blue.400',boxShadow:'xl'}}
                             >Registrar</Button>
                             <Stack align={'center'}>
                                 <Text>
