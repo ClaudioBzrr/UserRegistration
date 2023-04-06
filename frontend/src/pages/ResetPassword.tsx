@@ -22,7 +22,7 @@ export function ResetPassword(){
                     <Stack spacing={4}>
                         <FormControl>
                             <FormLabel fontSize={'lg'} id="email">E-mail</FormLabel>
-                            <Input type="email"/>
+                            <Input borderColor={'gray.300'} type="email"/>
                         </FormControl>
                     </Stack>
                     <Stack spacing={10} pt={5} >

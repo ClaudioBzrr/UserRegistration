@@ -24,11 +24,11 @@ export function Login(){
                     <Stack spacing={4}>
                         <FormControl>
                             <FormLabel fontSize={'lg'} id='email'>Email</FormLabel>
-                            <Input type='email'/>
+                            <Input borderColor={'gray.300'} type='email'/>
                         </FormControl>
                         <FormControl>
                             <FormLabel fontSize={'lg'} id='password'>Senha</FormLabel>
-                            <Input type='password'/>
+                            <Input borderColor={'gray.300'} type='password'/>
                         </FormControl>
                         <Stack spacing={10}>
                             <Stack
@@ -36,7 +36,7 @@ export function Login(){
                                 justify={'space-between'}
                                 align={'start'}
                             >
-                                <Checkbox>Lembrar meu acesso</Checkbox>
+                                <Checkbox borderColor={'gray.300'}>Lembrar meu acesso</Checkbox>
                                 <Link color={'blue.500'} >
                                     <Linker to='/reset-password'>
                                         Esqueceu sua senha?
