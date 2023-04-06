@@ -14,6 +14,10 @@ export const routes:RouteProps[] =[
         element:<Login/>
     },
     {
+        path:'/login',
+        element:<Login/>
+    },
+    {
         path:'/users',
         element:<Users/>
     },
