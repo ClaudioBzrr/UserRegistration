@@ -1,9 +1,14 @@
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
-    Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Stack, Text, Link
+    Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Stack, Text, Link, InputGroup, InputRightElement
 } from '@chakra-ui/react'
+import { useState } from 'react'
 import { Link as Linker} from 'react-router-dom'
 
 export function Login(){
+
+    const [showPassword,setShowPassword] = useState<boolean>(false)
+
     return(
         <Flex
             align={'center'}
@@ -28,7 +33,13 @@ export function Login(){
                         </FormControl>
                         <FormControl>
                             <FormLabel fontSize={'lg'} id='password'>Senha</FormLabel>
-                            <Input borderColor={'gray.300'} type='password'/>
+                            <InputGroup>
+                                <Input borderColor={'gray.300'} type={showPassword == true ? 'text':'password'}/>
+                                <InputRightElement 
+                                    onClick={() =>setShowPassword(!showPassword)}
+                                    children={showPassword==true? <ViewOffIcon/> : <ViewIcon/>}
+                                />
+                            </InputGroup>
                         </FormControl>
                         <Stack spacing={10}>
                             <Stack
