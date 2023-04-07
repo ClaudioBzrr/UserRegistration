@@ -1,6 +1,9 @@
+import { Flex } from "@chakra-ui/react";
 
 export function Users(){
     return(
-        <h1>Users</h1>
+        <Flex minH={'100vh'} align={'center'} justify={'center'} bg={"gray.200"}>
+            
+        </Flex>
     )
 }
