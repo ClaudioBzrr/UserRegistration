@@ -11,6 +11,27 @@ export class PrismaUserRepository implements UserRepository {
     return user;
   }
   async findOne(filter: Partial<IUser>): Promise<IUser> {
-    const user = await prisma.user.findUniqueOrThrow({ where: filter });
+    const user = await prisma.user.findFirstOrThrow({ where: filter });
+    return user;
+  }
+  async findMany(filter?: Partial<IUser>): Promise<IUser[]> {
+    try {
+      const user = filter
+        ? await prisma.user.findMany({ where: filter })
+        : await prisma.user.findMany();
+      return user;
+    } catch (err) {
+      throw new Error(`Erro ao consultar usuários : ${String(err)}`);
+    }
+  }
+  async update(filter: Partial<IUser>, data: Partial<IUser>): Promise<void> {
+    await prisma.user.update({ where: filter, data }).catch(() => {
+      throw new Error('Erro ao atualizar usuário');
+    });
+  }
+  async delete(filter: Partial<IUser>): Promise<void> {
+    await prisma.user.delete({ where: filter }).catch(() => {
+      throw new Error('Erro ao deletar usuário');
+    });
   }
 }
