@@ -1,6 +1,4 @@
-*.env
 /node_modules
+*.env
 *.db
 *.db-journal
-/dist
-/build
