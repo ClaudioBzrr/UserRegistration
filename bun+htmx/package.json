@@ -2,6 +2,7 @@
   "name": "beth",
   "version": "1.0.50",
   "scripts": {
+    "start":"bun run dist/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
     "postinstall": "bun build . --outdir=dist && bunx prisma migrate dev"
