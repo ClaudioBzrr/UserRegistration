@@ -1,12 +1,11 @@
-import { IUserType } from '@entities/User';
+import { IGetUsersPayload } from '@/entities/Payload';
+import { RemoveValues } from '@/entities/Validator';
 import { UserRepository } from '@repositories/user-repository';
 
 export class FilterUsersUseCase {
   constructor(private userRepository: UserRepository) {}
-  async exec() {
-    const users = await this.userRepository.findMany({
-      type: IUserType.USER,
-    });
-    return users;
+  async exec({ filter }: IGetUsersPayload) {
+    const users = await this.userRepository.findMany(filter);
+    return RemoveValues(users, ['password']);
   }
 }

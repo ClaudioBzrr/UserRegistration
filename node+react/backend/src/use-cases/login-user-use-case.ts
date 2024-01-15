@@ -1,3 +1,4 @@
+import { PickValues } from '@/entities/Validator';
 import { IUser } from '@entities/User';
 import { PasswordRepository } from '@repositories/password-repository';
 import { UserRepository } from '@repositories/user-repository';
@@ -20,5 +21,6 @@ export class LoginUserUseCase {
     if (!valid) {
       throw new Error('E-mail/senha incorretos');
     }
+    return PickValues(user, ['id', 'name', 'email', 'type']);
   }
 }
