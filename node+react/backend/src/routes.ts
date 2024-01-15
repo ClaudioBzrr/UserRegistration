@@ -6,6 +6,7 @@ const userController = new UserController();
 export const routes = Router();
 
 routes.get('/login', userController.login);
-routes.get('/users', userController.getUsers);
-routes.get('/user/:id', userController.getUser);
-routes.put('/user/:id', userController.updateUser);
+routes.get('/users', userController.getMany);
+routes.get('/user/:id', userController.getOne);
+routes.put('/user/:id', userController.update);
+routes.delete('/user/:id', userController.delete);

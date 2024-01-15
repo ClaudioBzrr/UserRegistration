@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { DeleteUserUseCase } from '@/use-cases/delete-user-use-case';
 import { GetUsersUseCase } from '@/use-cases/get-user-use-case';
 import { UpdateUserUseCase } from '@/use-cases/update-user-use-case';
 import {
   ICreateUserPayload,
+  IDeleteUserPayload,
   IGetUsersPayload,
   IUpdateUserPayload,
 } from '@entities/Payload';
@@ -45,7 +47,7 @@ export class UserController {
     }
   }
 
-  async getUsers(request: Request, response: Response) {
+  async getMany(request: Request, response: Response) {
     try {
       const payload: IGetUsersPayload = {
         filter: request.body,
@@ -60,7 +62,7 @@ export class UserController {
     }
   }
 
-  async getUser(request: Request, response: Response) {
+  async getOne(request: Request, response: Response) {
     try {
       const payload = request.params.id;
       const getUserUseCase = new GetUsersUseCase(userRepository);
@@ -71,7 +73,7 @@ export class UserController {
     }
   }
 
-  async updateUser(request: Request, response: Response) {
+  async update(request: Request, response: Response) {
     try {
       const payload: IUpdateUserPayload = {
         data: request.body,
@@ -84,6 +86,20 @@ export class UserController {
         passwordRepository,
       );
       await updateUserUseCase.exec(payload);
+      return response.status(204).send();
+    } catch (err: any) {
+      return response.status(400).json({ error: err.message });
+    }
+  }
+  async delete(request: Request, response: Response) {
+    try {
+      const payload: IDeleteUserPayload = {
+        filter: {
+          id: request.params.id,
+        },
+      };
+      const deleteUserUseCase = new DeleteUserUseCase(userRepository);
+      await deleteUserUseCase.exec(payload);
       return response.status(204).send();
     } catch (err: any) {
       return response.status(400).json({ error: err.message });

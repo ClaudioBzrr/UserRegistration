@@ -16,3 +16,7 @@ export type IUpdateUserPayload = {
   filter: Partial<IUser>;
   data: Partial<Omit<IUser, keyof IAutogen>>;
 };
+
+export type IDeleteUserPayload = {
+  filter: Partial<IUser>;
+};
