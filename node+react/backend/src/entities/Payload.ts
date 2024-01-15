@@ -5,6 +5,9 @@ export type ICreateUserPayload = {
   data: Omit<IUser, keyof IAutogen>;
 };
 
-export type IGetUsersPayload = {
+export type IGetUserPayload = {
   filter: Partial<Omit<IUser, 'password'>>;
+};
+export type IGetUsersPayload = {
+  filter?: Partial<Omit<IUser, 'password'>>;
 };

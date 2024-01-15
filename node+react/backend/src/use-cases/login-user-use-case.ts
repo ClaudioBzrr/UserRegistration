@@ -1,4 +1,4 @@
-import { PickValues } from '@/entities/Validator';
+import { PickValues } from '@entities/Validator';
 import { IUser } from '@entities/User';
 import { PasswordRepository } from '@repositories/password-repository';
 import { UserRepository } from '@repositories/user-repository';
