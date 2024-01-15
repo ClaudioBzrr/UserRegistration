@@ -1,7 +1,7 @@
-import { IAutogen } from '../entities/system/Autogen';
-import { IUser, IUserType } from '../entities/User';
-import { PasswordRepository } from '../repositories/password-repository';
-import { UserRepository } from '../repositories/user-repository';
+import { IAutogen } from '@entities/system/Autogen';
+import { IUser, IUserType } from '@entities/User';
+import { PasswordRepository } from '@repositories/password-repository';
+import { UserRepository } from '@repositories/user-repository';
 
 type IUserCreationData = Omit<IUser, keyof IAutogen | 'type'> & {
   type: IUserType;
@@ -14,7 +14,7 @@ export class CreateUserUseCase {
   ) {}
   async exec(data: IUserCreationData) {
     const hashedPassword = await this.passwordRespository.hash({
-      password: data.password,
+      text: data.password,
     });
     data.password = hashedPassword;
 

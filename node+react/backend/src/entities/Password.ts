@@ -1,7 +1,4 @@
-export interface IPassword {
-  password: string;
-}
-
-export type IComparePassword = IPassword & {
+export type IPassword = {
   hash: string;
+  text: string;
 };

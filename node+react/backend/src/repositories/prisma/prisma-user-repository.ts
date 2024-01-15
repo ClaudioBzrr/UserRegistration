@@ -1,6 +1,6 @@
-import { IAutogen } from '../../entities/system/Autogen';
-import { IUser } from '../../entities/User';
-import { prisma } from '../../prisma';
+import { IAutogen } from '@entities/system/Autogen';
+import { IUser } from '@entities/User';
+import { prisma } from '@/prisma';
 import { UserRepository } from '../user-repository';
 
 export class PrismaUserRepository implements UserRepository {

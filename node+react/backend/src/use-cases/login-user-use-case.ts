@@ -1,6 +1,6 @@
-import { IUser } from '../entities/User';
-import { PasswordRepository } from '../repositories/password-repository';
-import { UserRepository } from '../repositories/user-repository';
+import { IUser } from '@entities/User';
+import { PasswordRepository } from '@repositories/password-repository';
+import { UserRepository } from '@repositories/user-repository';
 
 type IUserLoginData = Pick<IUser, 'email' | 'password'>;
 
@@ -14,7 +14,7 @@ export class LoginUserUseCase {
       throw new Error('Usuário não encrontrado');
     });
     const valid = await this.passwordRepository.compare({
-      password,
+      text: password,
       hash: user.password,
     });
     if (!valid) {

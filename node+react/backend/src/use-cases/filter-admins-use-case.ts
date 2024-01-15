@@ -1,5 +1,5 @@
-import { IUserType } from '../entities/User';
-import { UserRepository } from '../repositories/user-repository';
+import { IUserType } from '@entities/User';
+import { UserRepository } from '@repositories/user-repository';
 
 export class FilterAdminsUseCase {
   constructor(private userRepository: UserRepository) {}

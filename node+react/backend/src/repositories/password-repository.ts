@@ -1,6 +1,6 @@
-import { IComparePassword, IPassword } from '../entities/Password';
+import { IPassword } from '@entities/Password';
 
 export interface PasswordRepository {
-  hash: (data: IPassword) => Promise<string>;
-  compare: (data: IComparePassword) => Promise<boolean>;
+  hash: (data: Pick<IPassword, 'text'>) => Promise<string>;
+  compare: (data: IPassword) => Promise<boolean>;
 }
