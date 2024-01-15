@@ -1,4 +1,4 @@
-import { IAutogen } from '../entities/Autogen';
+import { IAutogen } from '../entities/system/Autogen';
 import { IUser, IUserType } from '../entities/User';
 import { PasswordRepository } from '../repositories/password-repository';
 import { UserRepository } from '../repositories/user-repository';

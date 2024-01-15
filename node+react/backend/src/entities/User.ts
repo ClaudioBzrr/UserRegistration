@@ -1,4 +1,4 @@
-import { IAutogen } from './Autogen';
+import { IAutogen } from './system/Autogen';
 
 export enum IUserType {
   USER = 'user',

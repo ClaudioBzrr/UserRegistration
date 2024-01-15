@@ -1,4 +1,4 @@
-import { IAutogen } from '../../entities/Autogen';
+import { IAutogen } from '../../entities/system/Autogen';
 import { IUser } from '../../entities/User';
 import { prisma } from '../../prisma';
 import { UserRepository } from '../user-repository';
