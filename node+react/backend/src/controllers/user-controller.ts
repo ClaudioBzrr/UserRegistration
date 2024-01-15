@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetUsersUseCase } from '@/use-cases/get-user-use-case';
-import { ICreateUserPayload, IGetUsersPayload } from '@entities/Payload';
+import { UpdateUserUseCase } from '@/use-cases/update-user-use-case';
+import {
+  ICreateUserPayload,
+  IGetUsersPayload,
+  IUpdateUserPayload,
+} from '@entities/Payload';
 import { BcryptPasswordRepository } from '@repositories/bcrypt/bcrypt-password-repository';
 import { PrismaUserRepository } from '@repositories/prisma/prisma-user-repository';
 import { CreateUserUseCase } from '@use-cases/create-user-use-case';
@@ -61,6 +66,25 @@ export class UserController {
       const getUserUseCase = new GetUsersUseCase(userRepository);
       const user = await getUserUseCase.exec({ filter: { id: payload } });
       return response.json(user);
+    } catch (err: any) {
+      return response.status(400).json({ error: err.message });
+    }
+  }
+
+  async updateUser(request: Request, response: Response) {
+    try {
+      const payload: IUpdateUserPayload = {
+        data: request.body,
+        filter: {
+          id: request.params.id,
+        },
+      };
+      const updateUserUseCase = new UpdateUserUseCase(
+        userRepository,
+        passwordRepository,
+      );
+      await updateUserUseCase.exec(payload);
+      return response.status(204).send();
     } catch (err: any) {
       return response.status(400).json({ error: err.message });
     }

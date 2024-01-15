@@ -11,3 +11,8 @@ export type IGetUserPayload = {
 export type IGetUsersPayload = {
   filter?: Partial<Omit<IUser, 'password'>>;
 };
+
+export type IUpdateUserPayload = {
+  filter: Partial<IUser>;
+  data: Partial<Omit<IUser, keyof IAutogen>>;
+};
