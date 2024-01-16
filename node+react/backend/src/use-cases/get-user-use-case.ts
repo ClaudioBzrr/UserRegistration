@@ -5,7 +5,11 @@ import { UserRepository } from '@repositories/user-repository';
 export class GetUsersUseCase {
   constructor(private userRepository: UserRepository) {}
   async exec({ filter }: IGetUserPayload) {
-    const users = await this.userRepository.findOne(filter);
-    return RemoveValues(users, ['password']);
+    try {
+      const users = await this.userRepository.findOne(filter);
+      return RemoveValues(users, ['password']);
+    } catch (err) {
+      throw new Error(`Erro ao consultar usuário : ${String(err)}`);
+    }
   }
 }
