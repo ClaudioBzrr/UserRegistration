@@ -2,7 +2,7 @@ import { IGetUserPayload } from '@/entities/Payload';
 import { RemoveValues } from '@/entities/Validator';
 import { UserRepository } from '@repositories/user-repository';
 
-export class GetUsersUseCase {
+export class GetUserUseCase {
   constructor(private userRepository: UserRepository) {}
   async exec({ filter }: IGetUserPayload) {
     try {

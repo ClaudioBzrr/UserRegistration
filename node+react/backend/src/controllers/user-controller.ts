@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DeleteUserUseCase } from '@/use-cases/delete-user-use-case';
-import { GetUsersUseCase } from '@/use-cases/get-user-use-case';
+import { GetUsersUseCase } from '@/use-cases/get-users-use-case';
 import { UpdateUserUseCase } from '@/use-cases/update-user-use-case';
 import {
   ICreateUserPayload,
@@ -53,9 +53,7 @@ export class UserController {
         filter: request.body,
       };
       const getUsersUseCase = new GetUsersUseCase(userRepository);
-      const users = payload.filter
-        ? await getUsersUseCase.exec({ filter: payload.filter })
-        : await getUsersUseCase.exec({ filter: {} });
+      const users = await getUsersUseCase.exec(payload);
       return response.json(users);
     } catch (err: any) {
       return response.status(400).json({ error: err.message });
