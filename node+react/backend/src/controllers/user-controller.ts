@@ -26,7 +26,7 @@ export class UserController {
         userRepository,
         passwordRepository,
       );
-      const user = createUseCase.exec(payload);
+      const user = await createUseCase.exec(payload);
       return response.json(user);
     } catch (err: any) {
       return response.status(400).json({ error: err.message });
