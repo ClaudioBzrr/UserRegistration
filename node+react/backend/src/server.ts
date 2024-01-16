@@ -1,4 +1,13 @@
-import 'module-alias/register';
+import moduleAlias from 'module-alias';
+
+moduleAlias.addAliases({
+  '@': `${__dirname}/`,
+  '@entities': `${__dirname}/entities`,
+  '@repositories': `${__dirname}/repositories`,
+  '@use-cases': `${__dirname}/use-cases`,
+  '@controllers': `${__dirname}/controllers`,
+});
+
 import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
