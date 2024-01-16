@@ -5,14 +5,20 @@ import { UserRepository } from '../user-repository';
 
 export class PrismaUserRepository implements UserRepository {
   async create(data: Omit<IUser, keyof IAutogen>): Promise<IUser> {
-    const user = await prisma.user.create({ data }).catch(() => {
-      throw new Error('Erro ao criar usuário');
-    });
-    return user;
+    try {
+      const user = await prisma.user.create({ data });
+      return user;
+    } catch (err) {
+      throw new Error(`Erro ao criar usuário : ${String(err)}`);
+    }
   }
   async findOne(filter: Partial<IUser>): Promise<IUser> {
-    const user = await prisma.user.findFirstOrThrow({ where: filter });
-    return user;
+    try {
+      const user = await prisma.user.findFirstOrThrow({ where: filter });
+      return user;
+    } catch (err) {
+      throw new Error(`Erro ao consultar usuário : ${String(err)}`);
+    }
   }
   async findMany(filter?: Partial<IUser>): Promise<IUser[]> {
     try {
